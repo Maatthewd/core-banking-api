@@ -1,8 +1,7 @@
 package com.fintech.core_banking.domain.model;
 
-import jakarta.persistence.*;
-
 import java.math.BigDecimal;
+import java.util.List;
 
 public class Cuenta {
 
@@ -10,5 +9,9 @@ public class Cuenta {
     private TipoCuenta tipoCuenta;
     private EstadoCuenta estadoCuenta;
     private BigDecimal saldo;
+
+    private Cliente cliente;
+
+    private List<Movimiento> movimientos;
 
 }
