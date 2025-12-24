@@ -19,6 +19,7 @@ public class TransferenciaMapper {
                 .cuentaOrigen(cuentaOrigenEntity)
                 .cuentaDestino(cuentaDestinoEntity)
                 .importe(domain.getImporte().getMonto())
+                .moneda(domain.getImporte().getMoneda())
                 .fecha(domain.getFecha())
                 .estado(domain.getEstado())
                 .referencia(domain.getReferencia())

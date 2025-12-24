@@ -16,9 +16,11 @@ public class MovimientoMapper {
         return MovimientoEntity.builder()
                 .tipo(domain.getTipoMovimiento())
                 .importe(domain.getImporte().getMonto())
+                .monedaImporte(domain.getImporte().getMoneda())
                 .fecha(domain.getFecha())
                 .descripcion(domain.getDescripcion())
                 .saldoPosterior(domain.getSaldoPosterior().getMonto())
+                .monedaSaldo(domain.getSaldoPosterior().getMoneda())
                 .cuenta(cuentaEntity)
                 .build();
     }
@@ -29,10 +31,10 @@ public class MovimientoMapper {
         return new MovimientoDTO(
                 entity.getId(),
                 entity.getTipo(),
-                new Dinero(entity.getImporte(), entity.getCuenta().getMoneda()),
+                new Dinero(entity.getImporte(), entity.getMonedaImporte()),
                 entity.getFecha(),
                 entity.getDescripcion(),
-                new Dinero(entity.getSaldoPosterior(), entity.getCuenta().getMoneda())
+                new Dinero(entity.getImporte(), entity.getMonedaSaldo())
         );
     }
 }

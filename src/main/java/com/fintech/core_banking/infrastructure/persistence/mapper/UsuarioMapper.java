@@ -10,12 +10,12 @@ public class UsuarioMapper {
     public Usuario toDomain(UsuarioEntity entity) {
         if (entity == null) return null;
 
-        Usuario usuario = new Usuario();
-        usuario.setUsername(entity.getUsername());
-        usuario.setPassword(entity.getPassword());
-        usuario.setRol(entity.getRol());
-        usuario.setActivo(entity.getActivo());
-        return usuario;
+        return Usuario.reconstruir(
+                entity.getUsername(),
+                entity.getPassword(),
+                entity.getRol(),
+                entity.getActivo()
+        );
     }
 
     public UsuarioEntity toEntity(Usuario domain) {
