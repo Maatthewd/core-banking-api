@@ -9,37 +9,81 @@ public class Usuario {
     private RolUsuario rol;
     private Boolean activo;
 
-    // getters
 
-    public Boolean getActivo() {
-        return activo;
+    // Constructor para crear nuevos usuarios
+    public Usuario(String username, String password, RolUsuario rol) {
+        this.username = username;
+        this.password = password;
+        this.rol = rol;
+        this.activo = true;
     }
 
-    public RolUsuario getRol() {
-        return rol;
+    // Factory method para reconstruir desde BD
+    public static Usuario reconstruir(
+            String username,
+            String password,
+            RolUsuario rol,
+            Boolean activo
+    ) {
+        Usuario usuario = new Usuario(username, password, rol);
+        usuario.activo = activo;
+        return usuario;
+    }
+
+
+    // Getters
+    public String getUsername() {
+        return username;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public String getUsername() {
-        return username;
+    public RolUsuario getRol() {
+        return rol;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public Boolean getActivo() {
+        return activo;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    // Lógica de negocio
+    public void cambiarPassword(String nuevoPassword) {
+        if (nuevoPassword == null || nuevoPassword.length() < 8) {
+            throw new IllegalArgumentException("Password debe tener al menos 8 caracteres");
+        }
+        this.password = nuevoPassword;
     }
 
-    public void setRol(RolUsuario rol) {
-        this.rol = rol;
+    public void cambiarRol(RolUsuario nuevoRol) {
+        if (nuevoRol == null) {
+            throw new IllegalArgumentException("El rol no puede ser nulo");
+        }
+        this.rol = nuevoRol;
     }
 
-    public void setActivo(Boolean activo) {
-        this.activo = activo;
+    public void activar() {
+        this.activo = true;
+    }
+
+    public void desactivar() {
+        this.activo = false;
+    }
+
+    public boolean isActivo() {
+        return activo != null && activo;
+    }
+
+    public boolean isAdmin() {
+        return rol == RolUsuario.ADMIN;
+    }
+
+    public boolean isOperador() {
+        return rol == RolUsuario.OPERADOR;
+    }
+
+    public boolean isCliente() {
+        return rol == RolUsuario.CLIENTE;
     }
 }

@@ -9,14 +9,20 @@ public class AuditoriaOperacion {
     private LocalDateTime fecha;
     private String resultado;
 
-    // getters
-
-    public String getTipoOperacion() {
-        return tipoOperacion;
+    public AuditoriaOperacion(
+            String tipoOperacion,
+            Usuario usuario,
+            String resultado
+    ) {
+        this.tipoOperacion = tipoOperacion;
+        this.usuario = usuario;
+        this.resultado = resultado;
+        this.fecha = LocalDateTime.now();
     }
 
-    public String getResultado() {
-        return resultado;
+    // Getters
+    public String getTipoOperacion() {
+        return tipoOperacion;
     }
 
     public Usuario getUsuario() {
@@ -25,6 +31,10 @@ public class AuditoriaOperacion {
 
     public LocalDateTime getFecha() {
         return fecha;
+    }
+
+    public String getResultado() {
+        return resultado;
     }
 }
 
