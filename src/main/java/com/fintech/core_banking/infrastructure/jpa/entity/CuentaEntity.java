@@ -1,7 +1,8 @@
-package com.fintech.core_banking.infrastructure.persistence.jpa.entity;
+package com.fintech.core_banking.infrastructure.jpa.entity;
 
 import com.fintech.core_banking.domain.model.EstadoCuenta;
 import com.fintech.core_banking.domain.model.TipoCuenta;
+import com.fintech.core_banking.domain.model.valueObject.Dinero;
 import com.fintech.core_banking.domain.model.valueObject.Moneda;
 import jakarta.persistence.*;
 import lombok.*;
@@ -36,12 +37,12 @@ public class CuentaEntity {
     @Column(nullable = false, length = 20)
     private EstadoCuenta estado;
 
-    @Column(nullable = false, precision = 15, scale = 2)
-    private BigDecimal saldo;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 3)
-    private Moneda moneda;
+    @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "monto", column = @Column(name = "saldo", nullable = false, precision = 15, scale = 2)),
+        @AttributeOverride(name = "moneda", column = @Column(name = "moneda", nullable = false, length = 3))
+    })
+    private Dinero saldo;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "cliente_id", nullable = false)

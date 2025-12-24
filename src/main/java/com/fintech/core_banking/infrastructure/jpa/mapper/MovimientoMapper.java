@@ -1,10 +1,10 @@
-package com.fintech.core_banking.infrastructure.persistence.mapper;
+package com.fintech.core_banking.infrastructure.jpa.mapper;
 
 import com.fintech.core_banking.domain.model.entity.Movimiento;
 import com.fintech.core_banking.domain.model.valueObject.Dinero;
-import com.fintech.core_banking.infrastructure.persistence.dto.MovimientoDTO;
-import com.fintech.core_banking.infrastructure.persistence.jpa.entity.CuentaEntity;
-import com.fintech.core_banking.infrastructure.persistence.jpa.entity.MovimientoEntity;
+import com.fintech.core_banking.domain.model.dto.MovimientoDTO;
+import com.fintech.core_banking.infrastructure.jpa.entity.CuentaEntity;
+import com.fintech.core_banking.infrastructure.jpa.entity.MovimientoEntity;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,12 +15,10 @@ public class MovimientoMapper {
 
         return MovimientoEntity.builder()
                 .tipo(domain.getTipoMovimiento())
-                .importe(domain.getImporte().getMonto())
-                .monedaImporte(domain.getImporte().getMoneda())
+                .importe(domain.getImporte())
                 .fecha(domain.getFecha())
                 .descripcion(domain.getDescripcion())
-                .saldoPosterior(domain.getSaldoPosterior().getMonto())
-                .monedaSaldo(domain.getSaldoPosterior().getMoneda())
+                .saldoPosterior(domain.getSaldoPosterior())
                 .cuenta(cuentaEntity)
                 .build();
     }
@@ -31,10 +29,10 @@ public class MovimientoMapper {
         return new MovimientoDTO(
                 entity.getId(),
                 entity.getTipo(),
-                new Dinero(entity.getImporte(), entity.getMonedaImporte()),
+                entity.getImporte(),
                 entity.getFecha(),
                 entity.getDescripcion(),
-                new Dinero(entity.getImporte(), entity.getMonedaSaldo())
+                entity.getImporte()
         );
     }
 }

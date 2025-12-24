@@ -1,7 +1,9 @@
-package com.fintech.core_banking.infrastructure.persistence.jpa.entity;
+package com.fintech.core_banking.infrastructure.jpa.entity;
 
 import com.fintech.core_banking.domain.model.EstadoCliente;
 import com.fintech.core_banking.domain.model.TipoCliente;
+import com.fintech.core_banking.domain.model.valueObject.Documento;
+import com.fintech.core_banking.domain.model.valueObject.Email;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,8 +24,8 @@ public class ClienteEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true, length = 20)
-    private String documento;
+    @Embedded
+    private Documento documento;
 
     @Column(nullable = false, length = 200)
     private String nombre;
@@ -32,8 +34,8 @@ public class ClienteEntity {
     @Column(nullable = false, length = 20)
     private TipoCliente tipo;
 
-    @Column(nullable = false, length = 100)
-    private String email;
+    @Embedded
+    private Email email;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)

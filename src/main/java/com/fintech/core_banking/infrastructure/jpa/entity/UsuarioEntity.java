@@ -1,4 +1,4 @@
-package com.fintech.core_banking.infrastructure.persistence.jpa.entity;
+package com.fintech.core_banking.infrastructure.jpa.entity;
 
 import com.fintech.core_banking.domain.model.RolUsuario;
 import jakarta.persistence.*;

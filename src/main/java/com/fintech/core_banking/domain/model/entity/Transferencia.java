@@ -7,13 +7,14 @@ import java.time.LocalDateTime;
 
 public class Transferencia {
 
+    private String referencia;
+
     private Cuenta cuentaOrigen;
     private Cuenta cuentaDestino;
     private Dinero importe;
     private LocalDateTime fecha;
     private EstadoTransferencia estado;
 
-    private String referencia;
 
     public LocalDateTime getFecha() {
         return fecha;

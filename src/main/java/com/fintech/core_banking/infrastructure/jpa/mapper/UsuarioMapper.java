@@ -1,7 +1,7 @@
-package com.fintech.core_banking.infrastructure.persistence.mapper;
+package com.fintech.core_banking.infrastructure.jpa.mapper;
 
 import com.fintech.core_banking.domain.model.entity.Usuario;
-import com.fintech.core_banking.infrastructure.persistence.jpa.entity.UsuarioEntity;
+import com.fintech.core_banking.infrastructure.jpa.entity.UsuarioEntity;
 import org.springframework.stereotype.Component;
 
 @Component

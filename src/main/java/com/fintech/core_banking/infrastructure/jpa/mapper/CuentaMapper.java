@@ -1,11 +1,11 @@
-package com.fintech.core_banking.infrastructure.persistence.mapper;
+package com.fintech.core_banking.infrastructure.jpa.mapper;
 
 import com.fintech.core_banking.domain.model.entity.Cliente;
 import com.fintech.core_banking.domain.model.entity.Cuenta;
 import com.fintech.core_banking.domain.model.valueObject.Dinero;
 import com.fintech.core_banking.domain.model.valueObject.NumeroCuenta;
-import com.fintech.core_banking.infrastructure.persistence.jpa.entity.ClienteEntity;
-import com.fintech.core_banking.infrastructure.persistence.jpa.entity.CuentaEntity;
+import com.fintech.core_banking.infrastructure.jpa.entity.ClienteEntity;
+import com.fintech.core_banking.infrastructure.jpa.entity.CuentaEntity;
 import org.springframework.stereotype.Component;
 
 
@@ -21,13 +21,11 @@ public class CuentaMapper {
     public Cuenta toDomain(CuentaEntity entity, Cliente cliente) {
         if (entity == null) return null;
 
-        Dinero saldo = new Dinero(entity.getSaldo(), entity.getMoneda());
-
         return Cuenta.reconstruir(
                 new NumeroCuenta(entity.getNumero()),
                 entity.getTipo(),
                 entity.getEstado(),
-                saldo,
+                entity.getSaldo(),
                 cliente,
                 null // Los movimientos se cargan aparte si se necesitan
         );
@@ -40,15 +38,13 @@ public class CuentaMapper {
                 .numero(domain.getNumeroCuenta().getValor())
                 .tipo(domain.getTipoCuenta())
                 .estado(domain.getEstadoCuenta())
-                .saldo(domain.getSaldo().getMonto())
-                .moneda(domain.getSaldo().getMoneda())
+                .saldo(domain.getSaldo())
                 .cliente(clienteEntity)
                 .build();
     }
 
     public void updateEntity(Cuenta domain, CuentaEntity entity) {
         entity.setEstado(domain.getEstadoCuenta());
-        entity.setSaldo(domain.getSaldo().getMonto());
-        entity.setMoneda(domain.getSaldo().getMoneda());
+        entity.setSaldo(domain.getSaldo());
     }
 }
