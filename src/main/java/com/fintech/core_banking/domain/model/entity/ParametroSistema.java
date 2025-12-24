@@ -9,4 +9,5 @@ public class ParametroSistema {
     private TipoParametro tipoParametro;
     private boolean activo;
 
+
 }

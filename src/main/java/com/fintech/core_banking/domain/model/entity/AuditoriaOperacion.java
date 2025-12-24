@@ -9,4 +9,5 @@ public class AuditoriaOperacion {
     private LocalDateTime fecha;
     private String resultado;
 
+
 }

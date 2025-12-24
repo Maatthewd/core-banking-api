@@ -3,6 +3,7 @@ package com.fintech.core_banking.infrastructure.persistance.jpa.entity;
 
 import com.fintech.core_banking.domain.model.EstadoCuenta;
 import com.fintech.core_banking.domain.model.TipoCuenta;
+import com.fintech.core_banking.domain.model.valueObject.Moneda;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -30,6 +31,8 @@ public class CuentaEntity {
     @Column(nullable = false)
     private BigDecimal saldo;
 
+    @Column(nullable = false)
+    private Moneda moneda;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "cliente_id")

@@ -16,4 +16,37 @@ public class Cliente {
 
     private List<Cuenta> cuentas;
 
+    // getters
+    public String getDocumento() {
+        return documento;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public TipoCliente getTipoCliente() {
+        return tipoCliente;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public EstadoCliente getEstado() {
+        return estado;
+    }
+
+    public List<Cuenta> getCuentas() {
+        return cuentas;
+    }
+
+
+    //
+
+    public boolean isActivo(){
+        return estado.equals(EstadoCliente.ACTIVO);
+    }
+
+
 }

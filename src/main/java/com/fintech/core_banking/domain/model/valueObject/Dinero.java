@@ -15,6 +15,14 @@ public class Dinero {
         this.moneda = moneda;
     }
 
+    public BigDecimal getMonto() {
+        return monto;
+    }
+
+    public Moneda getMoneda() {
+        return moneda;
+    }
+
     public Dinero sumar(Dinero otro) {
         validarMoneda(otro);
         return new Dinero(monto.add(otro.monto), moneda);
@@ -27,6 +35,7 @@ public class Dinero {
         }
         return new Dinero(monto.subtract(otro.monto), moneda);
     }
+
 
     private void validarMoneda(Dinero otro) {
         if (!moneda.equals(otro.moneda)) {

@@ -9,4 +9,5 @@ public class Usuario {
     private RolUsuario rolUsuario;
     private Boolean estado;
 
+
 }
