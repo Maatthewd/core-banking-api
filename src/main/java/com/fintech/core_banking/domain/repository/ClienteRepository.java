@@ -1,7 +1,7 @@
 package com.fintech.core_banking.domain.repository;
 
 
-import com.fintech.core_banking.domain.model.Cliente;
+import com.fintech.core_banking.domain.model.entity.Cliente;
 
 import java.util.Optional;
 

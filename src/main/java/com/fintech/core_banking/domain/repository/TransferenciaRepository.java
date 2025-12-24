@@ -1,6 +1,6 @@
 package com.fintech.core_banking.domain.repository;
 
-import com.fintech.core_banking.domain.model.Transferencia;
+import com.fintech.core_banking.domain.model.entity.Transferencia;
 
 import java.util.Optional;
 

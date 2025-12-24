@@ -1,6 +1,6 @@
 package com.fintech.core_banking.domain.repository;
 
-import com.fintech.core_banking.domain.model.AuditoriaOperacion;
+import com.fintech.core_banking.domain.model.entity.AuditoriaOperacion;
 
 import java.time.LocalDateTime;
 import java.util.List;

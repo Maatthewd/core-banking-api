@@ -1,6 +1,6 @@
 package com.fintech.core_banking.domain.repository;
 
-import com.fintech.core_banking.domain.model.Cuenta;
+import com.fintech.core_banking.domain.model.entity.Cuenta;
 
 import java.util.List;
 import java.util.Optional;

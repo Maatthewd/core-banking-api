@@ -1,6 +1,6 @@
 package com.fintech.core_banking.domain.repository;
 
-import com.fintech.core_banking.domain.model.Movimiento;
+import com.fintech.core_banking.domain.model.entity.Movimiento;
 
 import java.time.LocalDateTime;
 import java.util.List;

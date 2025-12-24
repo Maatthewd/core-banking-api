@@ -1,4 +1,6 @@
-package com.fintech.core_banking.domain.model;
+package com.fintech.core_banking.domain.model.entity;
+
+import com.fintech.core_banking.domain.model.TipoMovimiento;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

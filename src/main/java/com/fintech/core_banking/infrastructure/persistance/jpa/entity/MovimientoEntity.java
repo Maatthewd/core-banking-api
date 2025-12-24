@@ -1,6 +1,5 @@
 package com.fintech.core_banking.infrastructure.persistance.jpa.entity;
 
-import com.fintech.core_banking.domain.model.Cuenta;
 import com.fintech.core_banking.domain.model.TipoMovimiento;
 import jakarta.persistence.*;
 

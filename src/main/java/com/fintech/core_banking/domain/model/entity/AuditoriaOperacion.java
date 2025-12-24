@@ -1,4 +1,4 @@
-package com.fintech.core_banking.domain.model;
+package com.fintech.core_banking.domain.model.entity;
 
 import java.time.LocalDateTime;
 

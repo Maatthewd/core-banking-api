@@ -1,7 +1,9 @@
-package com.fintech.core_banking.domain.model;
+package com.fintech.core_banking.domain.model.entity;
+
+import com.fintech.core_banking.domain.model.EstadoCliente;
+import com.fintech.core_banking.domain.model.TipoCliente;
 
 import java.util.List;
-import java.util.Set;
 
 
 public class Cliente {
