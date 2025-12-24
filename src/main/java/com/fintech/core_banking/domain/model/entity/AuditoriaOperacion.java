@@ -9,5 +9,22 @@ public class AuditoriaOperacion {
     private LocalDateTime fecha;
     private String resultado;
 
+    // getters
 
+    public String getTipoOperacion() {
+        return tipoOperacion;
+    }
+
+    public String getResultado() {
+        return resultado;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public LocalDateTime getFecha() {
+        return fecha;
+    }
 }
+

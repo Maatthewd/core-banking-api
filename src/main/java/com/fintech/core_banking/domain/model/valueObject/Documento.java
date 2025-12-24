@@ -10,5 +10,9 @@ public class Documento {
         }
         this.numero = numero;
     }
+
+    public String getNumero() {
+        return numero;
+    }
 }
 

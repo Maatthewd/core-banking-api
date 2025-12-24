@@ -1,6 +1,7 @@
 package com.fintech.core_banking.domain.model.valueObject;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 public class Dinero {
 
@@ -10,6 +11,9 @@ public class Dinero {
     public Dinero(BigDecimal monto, Moneda moneda) {
         if (monto == null || monto.signum() < 0) {
             throw new IllegalArgumentException("Monto inválido");
+        }
+        if (moneda == null) {
+            throw new IllegalArgumentException("Moneda no puede ser nula");
         }
         this.monto = monto;
         this.moneda = moneda;
@@ -42,5 +46,19 @@ public class Dinero {
             throw new IllegalArgumentException("Monedas incompatibles");
         }
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Dinero dinero = (Dinero) o;
+        return monto.compareTo(dinero.monto) == 0 && moneda == dinero.moneda;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(monto, moneda);
+    }
+
 }
 

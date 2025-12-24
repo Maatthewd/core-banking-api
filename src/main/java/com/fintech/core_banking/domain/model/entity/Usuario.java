@@ -6,8 +6,40 @@ public class Usuario {
 
     private String username;
     private String password;
-    private RolUsuario rolUsuario;
-    private Boolean estado;
+    private RolUsuario rol;
+    private Boolean activo;
 
+    // getters
 
+    public Boolean getActivo() {
+        return activo;
+    }
+
+    public RolUsuario getRol() {
+        return rol;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setRol(RolUsuario rol) {
+        this.rol = rol;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
+    }
 }

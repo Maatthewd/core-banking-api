@@ -10,5 +10,9 @@ public class Email {
         }
         this.valor = valor;
     }
+
+    public String getValor() {
+        return valor;
+    }
 }
 

@@ -30,5 +30,28 @@ public class Movimiento {
         this.cuenta = cuenta;
     }
 
+    // getters
+    public LocalDateTime getFecha() {
+        return fecha;
+    }
 
+    public Cuenta getCuenta() {
+        return cuenta;
+    }
+
+    public Dinero getImporte() {
+        return importe;
+    }
+
+    public Dinero getSaldoPosterior() {
+        return saldoPosterior;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public TipoMovimiento getTipoMovimiento() {
+        return tipoMovimiento;
+    }
 }

@@ -11,8 +11,40 @@ public class Transferencia {
     private Cuenta cuentaDestino;
     private Dinero importe;
     private LocalDateTime fecha;
-    private EstadoTransferencia estadoTransferencia;
+    private EstadoTransferencia estado;
 
     private String referencia;
 
+    public LocalDateTime getFecha() {
+        return fecha;
+    }
+
+    public Dinero getImporte() {
+        return importe;
+    }
+
+    public Cuenta getCuentaDestino() {
+        return cuentaDestino;
+    }
+
+    public Cuenta getCuentaOrigen() {
+        return cuentaOrigen;
+    }
+
+    public EstadoTransferencia getEstado() {
+        return estado;
+    }
+
+    public String getReferencia() {
+        return referencia;
+    }
+
+    public void setCuentaOrigen(Cuenta cuentaOrigen) {
+        this.cuentaOrigen = cuentaOrigen;
+    }
+
+
+    public void setEstado(EstadoTransferencia estado) {
+        this.estado = estado;
+    }
 }
