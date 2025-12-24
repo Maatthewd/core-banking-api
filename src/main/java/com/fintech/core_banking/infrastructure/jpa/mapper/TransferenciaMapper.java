@@ -1,8 +1,8 @@
-package com.fintech.core_banking.infrastructure.persistence.mapper;
+package com.fintech.core_banking.infrastructure.jpa.mapper;
 
 import com.fintech.core_banking.domain.model.entity.Transferencia;
-import com.fintech.core_banking.infrastructure.persistence.jpa.entity.CuentaEntity;
-import com.fintech.core_banking.infrastructure.persistence.jpa.entity.TransferenciaEntity;
+import com.fintech.core_banking.infrastructure.jpa.entity.CuentaEntity;
+import com.fintech.core_banking.infrastructure.jpa.entity.TransferenciaEntity;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -18,8 +18,7 @@ public class TransferenciaMapper {
         return TransferenciaEntity.builder()
                 .cuentaOrigen(cuentaOrigenEntity)
                 .cuentaDestino(cuentaDestinoEntity)
-                .importe(domain.getImporte().getMonto())
-                .moneda(domain.getImporte().getMoneda())
+                .importe(domain.getImporte())
                 .fecha(domain.getFecha())
                 .estado(domain.getEstado())
                 .referencia(domain.getReferencia())

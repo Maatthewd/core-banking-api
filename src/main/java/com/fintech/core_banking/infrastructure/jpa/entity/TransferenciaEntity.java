@@ -1,6 +1,7 @@
-package com.fintech.core_banking.infrastructure.persistence.jpa.entity;
+package com.fintech.core_banking.infrastructure.jpa.entity;
 
 import com.fintech.core_banking.domain.model.EstadoTransferencia;
+import com.fintech.core_banking.domain.model.valueObject.Dinero;
 import com.fintech.core_banking.domain.model.valueObject.Moneda;
 import jakarta.persistence.*;
 import lombok.*;
@@ -23,6 +24,9 @@ public class TransferenciaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, unique = true, length = 50)
+    private String referencia;
+
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "cuenta_origen_id", nullable = false)
     private CuentaEntity cuentaOrigen;
@@ -31,12 +35,12 @@ public class TransferenciaEntity {
     @JoinColumn(name = "cuenta_destino_id", nullable = false)
     private CuentaEntity cuentaDestino;
 
-    @Column(nullable = false, precision = 15, scale = 2)
-    private BigDecimal importe;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 3)
-    private Moneda moneda;
+    @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "monto", column = @Column(name = "importe", nullable = false, precision = 15, scale = 2)),
+        @AttributeOverride(name = "moneda", column = @Column(name = "moneda", nullable = false, length = 3))
+    })
+    private Dinero importe;
 
     @Column(nullable = false)
     private LocalDateTime fecha;
@@ -45,6 +49,4 @@ public class TransferenciaEntity {
     @Column(nullable = false, length = 20)
     private EstadoTransferencia estado;
 
-    @Column(nullable = false, unique = true, length = 50)
-    private String referencia;
 }

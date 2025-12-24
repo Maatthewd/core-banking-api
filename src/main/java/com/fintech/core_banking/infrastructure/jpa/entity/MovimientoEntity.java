@@ -1,4 +1,4 @@
-package com.fintech.core_banking.infrastructure.persistence.jpa.entity;
+package com.fintech.core_banking.infrastructure.jpa.entity;
 
 import com.fintech.core_banking.domain.model.TipoMovimiento;
 import com.fintech.core_banking.domain.model.valueObject.Dinero;
@@ -28,12 +28,12 @@ public class MovimientoEntity {
     @Column(nullable = false, length = 20)
     private TipoMovimiento tipo;
 
-    @Column(nullable = false, precision = 15, scale = 2)
-    private BigDecimal importe;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 3)
-    private Moneda monedaImporte;
+    @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "monto", column = @Column(name = "importe", nullable = false, precision = 15, scale = 2)),
+        @AttributeOverride(name = "moneda", column = @Column(name = "moneda_importe", nullable = false, length = 3))
+    })
+    private Dinero importe;
 
     @Column(nullable = false)
     private LocalDateTime fecha;
@@ -41,12 +41,12 @@ public class MovimientoEntity {
     @Column(nullable = false, length = 500)
     private String descripcion;
 
-    @Column(nullable = false, precision = 15, scale = 2)
-    private BigDecimal saldoPosterior;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 3)
-    private Moneda monedaSaldo;
+    @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "monto", column = @Column(name = "saldo_posterior", nullable = false, precision = 15, scale = 2)),
+        @AttributeOverride(name = "moneda", column = @Column(name = "moneda_saldo", nullable = false, length = 3))
+    })
+    private Dinero saldoPosterior;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "cuenta_id", nullable = false)
