@@ -1,6 +1,7 @@
 package com.fintech.core_banking.infrastructure.persistence.jpa.entity;
 
 import com.fintech.core_banking.domain.model.EstadoTransferencia;
+import com.fintech.core_banking.domain.model.valueObject.Moneda;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -32,6 +33,10 @@ public class TransferenciaEntity {
 
     @Column(nullable = false, precision = 15, scale = 2)
     private BigDecimal importe;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 3)
+    private Moneda moneda;
 
     @Column(nullable = false)
     private LocalDateTime fecha;

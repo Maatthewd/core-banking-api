@@ -1,6 +1,8 @@
 package com.fintech.core_banking.infrastructure.persistence.jpa.entity;
 
 import com.fintech.core_banking.domain.model.TipoMovimiento;
+import com.fintech.core_banking.domain.model.valueObject.Dinero;
+import com.fintech.core_banking.domain.model.valueObject.Moneda;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -29,6 +31,10 @@ public class MovimientoEntity {
     @Column(nullable = false, precision = 15, scale = 2)
     private BigDecimal importe;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 3)
+    private Moneda monedaImporte;
+
     @Column(nullable = false)
     private LocalDateTime fecha;
 
@@ -37,6 +43,10 @@ public class MovimientoEntity {
 
     @Column(nullable = false, precision = 15, scale = 2)
     private BigDecimal saldoPosterior;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 3)
+    private Moneda monedaSaldo;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "cuenta_id", nullable = false)
